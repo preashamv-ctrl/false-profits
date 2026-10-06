@@ -1,0 +1,483 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>FALSE PROFITS — Drop 003 Atelier</title>
+<script src="https://cdn.tailwindcss.com"></script>
+<link rel="preconnect" href="https://fonts.googleapis.com"/>
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
+<link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600;700;900&family=Inter:wght@200;300;400;500;600;700&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet"/>
+<script>tailwind.config={theme:{extend:{colors:{ink:"#08080a",slate:"#111114",field:"#1a1a20",panel:"#1f1f26",edge:"#26262e",bone:"#f7f6f2",bone2:"#eeece5",sand:"#d9d5c7",mute:"#7d7d8c",gold:"#c5a059",goldlt:"#dec38b",golddk:"#a3803e"},fontFamily:{cinzel:["Cinzel","serif"],inter:["Inter","sans-serif"],mono:["IBM Plex Mono","monospace"]}}}}</script>
+<style>
+html,body{background:#08080a;color:#f7f6f2;font-family:Inter,sans-serif}
+.font-display{font-family:Cinzel,serif}
+.font-mono-label{font-family:"IBM Plex Mono",monospace;letter-spacing:.18em;text-transform:uppercase}
+.page{display:none}.page.active{display:block}
+.hero-slide{opacity:0;transition:opacity 1.15s ease;pointer-events:none}.hero-slide.active{opacity:1;pointer-events:auto}
+.ann-msg{transition:opacity .7s ease}
+.dot.active,.ann-dot.active{background:#c5a059}
+.cart-drawer,.account-panel{transform:translateX(100%);transition:transform .35s ease}
+.mobile-drawer{transform:translateX(-100%);transition:transform .35s ease}
+.cart-drawer.open,.account-panel.open,.mobile-drawer.open{transform:translateX(0)}
+.overlay,.search-overlay{opacity:0;pointer-events:none;transition:opacity .3s ease}
+.overlay.open,.search-overlay.open{opacity:1;pointer-events:auto}
+.size-btn.selected,.filter-chip.active,.qv-size.selected{border-color:#c5a059;color:#c5a059}
+.toast{transform:translateY(140%);transition:transform .35s ease}.toast.show{transform:translateY(0)}
+.preview-mobile #app-shell{max-width:390px;margin:0 auto;box-shadow:0 0 0 1px #26262e}
+#presentation-bar{z-index:100}
+.gold-rule{width:40px;height:1px;background:#c5a059;margin:0 auto 1rem}
+.product-card .hover-actions{opacity:0;transition:opacity .25s}.product-card:hover .hover-actions{opacity:1}
+.product-visual{transition:transform .5s}.product-card:hover .product-visual{transform:scale(1.03)}
+.nav-link.active{color:#f7f6f2;font-weight:600}.nav-prayer{color:#c5a059}
+.free-ship-fill{transition:width .4s}
+input,select,textarea{background:#1a1a20;border:1px solid rgba(255,255,255,.1);color:#f7f6f2}
+input:focus,select:focus,textarea:focus{outline:none;border-color:#c5a059}
+.badge{font-family:"IBM Plex Mono",monospace;font-size:9px;letter-spacing:.16em;text-transform:uppercase;padding:3px 8px}
+.badge-new,.badge-bundle{background:#c5a059;color:#08080a}
+.badge-essential,.badge-core{background:transparent;color:#eeece5;border:1px solid rgba(255,255,255,.18)}
+.badge-bestseller{color:#c5a059;border:1px solid #c5a059}
+.badge-limited,.badge-few{color:#f0a8a8;border:1px solid #7a3030;background:#1a1010}
+.border-white10{border-color:rgba(255,255,255,.1)}
+</style>
+</head>
+<body class="bg-ink text-bone font-inter antialiased preview-desktop">
+
+<div id="presentation-bar" class="fixed bottom-0 inset-x-0 bg-slate border-t border-white10 px-4 py-3 flex flex-wrap items-center justify-between gap-3">
+  <p class="text-[10px] tracking-[0.2em] uppercase text-mute font-display">CLIENT PROTOTYPE · False Profits Atelier · Drop 003</p>
+  <div class="flex items-center gap-2">
+    <button type="button" id="btn-desktop" class="px-3 py-1.5 text-[10px] tracking-widest uppercase border border-gold text-gold rounded-sm">Desktop</button>
+    <button type="button" id="btn-mobile" class="px-3 py-1.5 text-[10px] tracking-widest uppercase border border-edge text-mute rounded-sm hover:border-gold hover:text-gold">Mobile</button>
+    <button type="button" id="btn-download" class="px-3 py-1.5 text-[10px] tracking-widest uppercase bg-gold text-ink rounded-sm hover:bg-golddk">Download HTML</button>
+  </div>
+</div>
+<div id="app-shell" class="pb-20 min-h-screen">
+  <div class="bg-slate border-b border-white10 h-9 relative overflow-hidden">
+    <div class="h-full flex items-center justify-center px-8">
+      <p class="ann-msg absolute inset-x-0 top-0 h-full flex items-center justify-center gap-3 text-[10px] md:text-[11px] tracking-[0.18em] uppercase text-bone2/90" data-ann="0" style="opacity:1"><span class="hidden sm:inline w-1.5 h-1.5 rounded-full bg-gold shrink-0"></span>Complimentary domestic shipping over $150<span class="hidden sm:inline w-1.5 h-1.5 rounded-full bg-gold shrink-0"></span></p>
+      <p class="ann-msg absolute inset-x-0 top-0 h-full flex items-center justify-center gap-3 text-[10px] md:text-[11px] tracking-[0.18em] uppercase text-bone2/90" data-ann="1" style="opacity:0"><span class="hidden sm:inline w-1.5 h-1.5 rounded-full bg-gold shrink-0"></span>Proceeds invested in faith &amp; community outreach<span class="hidden sm:inline w-1.5 h-1.5 rounded-full bg-gold shrink-0"></span></p>
+      <p class="ann-msg absolute inset-x-0 top-0 h-full flex items-center justify-center gap-3 text-[10px] md:text-[11px] tracking-[0.18em] uppercase text-bone2/90" data-ann="2" style="opacity:0"><span class="hidden sm:inline w-1.5 h-1.5 rounded-full bg-gold shrink-0"></span>Automatic 15% off collection hoodie + pants sets<span class="hidden sm:inline w-1.5 h-1.5 rounded-full bg-gold shrink-0"></span></p>
+    </div>
+    <div class="absolute right-3 top-1/2 -translate-y-1/2 flex gap-1.5" id="ann-dots"></div>
+  </div>
+  <header class="sticky top-0 z-50 bg-ink/95 backdrop-blur border-b border-white10">
+    <div class="max-w-7xl mx-auto px-4 h-[4.75rem] grid grid-cols-3 items-center">
+      <div class="flex items-center">
+        <button type="button" id="btn-menu" class="md:hidden p-2 -ml-2" aria-label="Menu"><svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M4 6h16M4 12h16M4 18h16"/></svg></button>
+        <nav class="hidden md:flex items-center gap-6 text-[10px] tracking-[0.22em] uppercase text-mute">
+          <a href="#" data-nav="home" class="nav-link text-bone hover:text-gold transition">Home</a>
+          <a href="#" data-nav="shop" class="nav-link hover:text-gold transition">Shop</a>
+          <a href="#" data-nav="prayer" class="nav-link nav-prayer hover:text-goldlt transition">• Prayer</a>
+          <a href="#" data-nav="about" class="nav-link hover:text-gold transition">About</a>
+        </nav>
+      </div>
+      <div class="text-center">
+        <a href="#" data-nav="home" class="font-display text-[15px] md:text-xl tracking-[0.35em] block hover:text-gold transition">FALSE PROFITS</a>
+        <p class="text-[8px] md:text-[9px] tracking-[0.4em] uppercase text-gold mt-0.5">Faith • Integrity</p>
+      </div>
+      <div class="flex items-center justify-end gap-1">
+        <button type="button" id="btn-search" class="p-2 text-mute hover:text-gold" aria-label="Search"><svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M21 21l-4.35-4.35M11 18a7 7 0 100-14 7 7 0 000 14z"/></svg></button>
+        <button type="button" id="btn-account" class="p-2 text-mute hover:text-gold" aria-label="Account"><svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z"/></svg></button>
+        <button type="button" id="btn-cart" class="relative p-2 text-mute hover:text-gold" aria-label="Bag"><svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M16 11V7a4 4 0 00-8 0v4M5 9h14l1 12H4L5 9z"/></svg><span id="cart-badge" class="absolute top-0.5 right-0.5 min-w-[18px] h-[18px] px-1 rounded-full bg-gold text-ink text-[10px] font-semibold flex items-center justify-center">0</span></button>
+      </div>
+    </div>
+  </header>
+  <div id="mobile-overlay" class="overlay fixed inset-0 bg-black/70 z-40"></div>
+  <aside id="mobile-drawer" class="mobile-drawer fixed left-0 top-0 bottom-0 w-80 max-w-[85vw] bg-slate border-r border-white10 z-50 flex flex-col p-6">
+    <div class="flex justify-between items-center mb-8"><span class="font-display tracking-[0.25em] text-sm">MENU</span><button type="button" id="btn-menu-close" class="text-mute hover:text-gold">✕</button></div>
+    <nav class="flex flex-col gap-5 text-sm tracking-[0.18em] uppercase">
+      <a href="#" data-nav="home" class="hover:text-gold">01. Home</a>
+      <a href="#" data-nav="shop" class="hover:text-gold">02. Shop Catalog</a>
+      <a href="#" data-scroll="bundle-promo" class="hover:text-gold">03. Sets &amp; Bundles <span class="text-gold">[Save 15%]</span></a>
+      <a href="#" data-nav="prayer" class="hover:text-gold">04. Prayer Sanctuary</a>
+      <a href="#" data-nav="about" class="hover:text-gold">05. Brand Manifesto</a>
+    </nav>
+    <blockquote class="mt-10 text-xs text-mute leading-relaxed italic border-l border-gold pl-3">“For what shall it profit a man, if he shall gain the whole world, and lose his own soul?”</blockquote>
+    <p class="mt-auto text-[10px] tracking-widest text-mute uppercase">© False Profits · Drop 003</p>
+  </aside>
+  <div id="search-overlay" class="search-overlay fixed inset-0 z-[65] bg-ink/96 flex items-start justify-center pt-24 px-4">
+    <div class="w-full max-w-xl">
+      <div class="flex justify-between mb-6"><p class="font-display tracking-[0.25em] text-sm">SEARCH</p><button type="button" id="btn-search-close" class="text-mute hover:text-gold">✕</button></div>
+      <input id="search-input" type="search" placeholder="Type any garment title, drop name, or fabric weight…" class="w-full px-4 py-3 text-sm bg-transparent border-0 border-b border-white10 rounded-none"/>
+      <div id="search-results" class="mt-6 space-y-2"></div>
+    </div>
+  </div>
+
+<section id="page-home" class="page active">
+  <div id="hero" class="relative h-[74vh] md:h-[90vh] overflow-hidden bg-slate">
+    <div class="hero-slide absolute inset-0 active" data-index="0">
+      <div class="absolute inset-0 bg-gradient-to-t from-ink via-ink/50 to-transparent z-10"></div>
+      <div class="absolute inset-0 bg-cover bg-center" style="background-image:url('assets/hero-narrow-gate.jpg')"></div>
+      <div class="absolute inset-0 z-20 flex flex-col items-center justify-end pb-16 md:pb-24 px-6 text-center">
+        <div class="gold-rule"></div>
+        <p class="font-mono-label text-[10px] text-gold mb-3">Campaign Preview • Winter Drop 004</p>
+        <h1 class="font-display text-3xl md:text-6xl tracking-[0.16em] mb-4">THE NARROW GATE</h1>
+        <p class="text-bone2/80 text-sm md:text-base max-w-xl mb-8 font-light leading-relaxed">Architectural silhouettes, custom 500 GSM loopback cotton, and unyielding faith. Drown out the noise of self-appointed prophets.</p>
+        <div class="flex flex-wrap justify-center gap-3">
+          <button type="button" data-nav="shop" class="px-7 py-3 bg-gold text-ink text-[10px] tracking-[0.25em] uppercase hover:bg-golddk transition">Explore Drop 003</button>
+          <button type="button" data-scroll="vip" class="px-7 py-3 border border-white/20 text-bone text-[10px] tracking-[0.25em] uppercase hover:border-gold hover:text-gold transition">Early Access List</button>
+        </div>
+      </div>
+    </div>
+    <div class="hero-slide absolute inset-0" data-index="1">
+      <div class="absolute inset-0 bg-gradient-to-t from-ink via-ink/55 to-transparent z-10"></div>
+      <div class="absolute inset-0 bg-cover bg-center" style="background-image:url('assets/hero-sanctuary-wovens.jpg')"></div>
+      <div class="absolute inset-0 z-20 flex flex-col items-center justify-end pb-16 md:pb-24 px-6 text-center">
+        <div class="gold-rule"></div>
+        <p class="font-mono-label text-[10px] text-gold mb-3">Editorial Atelier • Drop 005 Lookbook</p>
+        <h1 class="font-display text-3xl md:text-6xl tracking-[0.16em] mb-4">SANCTUARY WOVENS</h1>
+        <p class="text-bone2/80 text-sm md:text-base max-w-xl mb-8 font-light leading-relaxed">Heavy Japanese memory nylon blends, matte finishes, and tonal scriptures hidden in interior facings.</p>
+        <div class="flex flex-wrap justify-center gap-3">
+          <button type="button" data-nav="shop" class="px-7 py-3 border border-gold text-gold text-[10px] tracking-[0.25em] uppercase hover:bg-gold hover:text-ink transition">Shop Available Pieces</button>
+          <button type="button" data-scroll="vip" class="px-7 py-3 border border-white/20 text-bone text-[10px] tracking-[0.25em] uppercase hover:border-gold hover:text-gold transition">Drop Alerts</button>
+        </div>
+      </div>
+    </div>
+    <div class="hero-slide absolute inset-0" data-index="2">
+      <div class="absolute inset-0 bg-gradient-to-t from-ink via-ink/55 to-transparent z-10"></div>
+      <div class="absolute inset-0 bg-cover bg-center" style="background-image:url('assets/hero-profit-soul.jpg')"></div>
+      <div class="absolute inset-0 z-20 flex flex-col items-center justify-end pb-16 md:pb-24 px-6 text-center">
+        <div class="gold-rule"></div>
+        <p class="font-mono-label text-[10px] text-gold mb-3">Core Collection • Faith &amp; Soul</p>
+        <h1 class="font-display text-3xl md:text-6xl tracking-[0.16em] mb-4">PROFIT &amp; SOUL</h1>
+        <p class="text-bone2/80 text-sm md:text-base max-w-xl mb-8 font-light leading-relaxed">A continuous meditation on Mark 8:36. Double-layered boxy garments made to outlive passing trends.</p>
+        <button type="button" data-nav="shop" class="px-7 py-3 border border-gold text-gold text-[10px] tracking-[0.25em] uppercase hover:bg-gold hover:text-ink transition">View Catalog</button>
+      </div>
+    </div>
+    <div class="absolute bottom-6 inset-x-0 z-30 flex justify-center gap-2" id="hero-dots"></div>
+  </div>
+  <div id="releases" class="max-w-7xl mx-auto px-4 py-16 md:py-20">
+    <div class="flex flex-col md:flex-row md:items-end md:justify-between gap-4 mb-10">
+      <div><p class="font-mono-label text-[10px] text-gold mb-2">Immediate Availability</p><h2 class="font-display text-2xl md:text-4xl tracking-[0.18em]">CURRENT RELEASES</h2></div>
+      <button type="button" data-nav="shop" class="text-[10px] tracking-[0.22em] uppercase text-gold hover:underline self-start md:self-auto">View Full Catalog (8)</button>
+    </div>
+    <div id="home-grid" class="grid grid-cols-2 md:grid-cols-4 gap-3 md:gap-5"></div>
+  </div>
+  <div id="bundle-promo" class="border-y border-white10 bg-slate">
+    <div class="max-w-7xl mx-auto px-4 py-16 md:py-20 grid md:grid-cols-2 gap-10 items-center">
+      <div class="grid grid-cols-2 gap-3">
+        <div class="aspect-[3/4] bg-field border border-white10 overflow-hidden relative"><img src="assets/product-prophet-heavy-hoodie.png" alt="Prophet Heavy Hoodie" class="absolute inset-0 w-full h-full object-cover"/></div>
+        <div class="aspect-[3/4] bg-panel border border-white10 overflow-hidden relative mt-8"><img src="assets/product-sanctuary-sweatpant.png" alt="Sanctuary Relaxed Sweatpant" class="absolute inset-0 w-full h-full object-cover"/></div>
+      </div>
+      <div>
+        <p class="font-mono-label text-[10px] text-gold mb-3">Uniform Bundle Special</p>
+        <h2 class="font-display text-2xl md:text-4xl tracking-[0.14em] mb-4">THE DROP 003 UNIFORM</h2>
+        <p class="text-bone2/80 text-sm leading-relaxed mb-8">Pair any False Profits Heavyweight Top with our tailored bottoms. When purchased together as a set, an automatic 15% discount is calculated in your cart.</p>
+        <div class="flex flex-wrap gap-3">
+          <button type="button" data-nav="shop" data-filter="bundles" class="px-6 py-3 bg-gold text-ink text-[10px] tracking-[0.22em] uppercase hover:bg-golddk transition">Shop All Sets</button>
+          <button type="button" id="btn-add-uniform" class="px-6 py-3 border border-gold text-gold text-[10px] tracking-[0.22em] uppercase hover:bg-gold hover:text-ink transition">Quick View Prophet Set</button>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="max-w-3xl mx-auto px-4 py-20 md:py-28 text-center">
+    <div class="gold-rule"></div>
+    <blockquote class="font-display text-xl md:text-3xl tracking-wide leading-snug text-bone mb-6">“Do not conform to the pattern of this world. False profits promise everything while claiming your devotion. Walk by faith, and drown out the noise.”</blockquote>
+    <p class="font-mono-label text-[10px] text-gold mb-8">Romans 12:2 • False Profits Ethos</p>
+    <button type="button" data-nav="prayer" class="text-[11px] tracking-[0.2em] uppercase text-gold border-b border-gold pb-0.5 hover:text-goldlt">Enter the Prayer Sanctuary</button>
+  </div>
+  <div id="vip" class="border-t border-white10 bg-slate/80">
+    <div class="max-w-xl mx-auto px-4 py-14 text-center">
+      <p class="font-mono-label text-[10px] text-gold mb-2">Sanctuary Circle</p>
+      <h2 class="font-display text-xl md:text-2xl tracking-[0.18em] mb-3">PRIORITY DROP NOTIFICATION</h2>
+      <p class="text-mute text-sm mb-6">Subscribe for unreleased lookbooks, private drop codes, and scripture devotionals.</p>
+      <form id="vip-form" class="flex flex-col sm:flex-row gap-2">
+        <input type="email" required placeholder="Email address" class="flex-1 px-4 py-3 text-sm"/>
+        <button type="submit" class="px-6 py-3 bg-gold text-ink text-[10px] tracking-[0.2em] uppercase hover:bg-golddk shrink-0">Join VIP Roster</button>
+      </form>
+      <p id="vip-thanks" class="hidden mt-4 text-[10px] tracking-widest uppercase text-gold">You’re on the Sanctuary Circle list.</p>
+    </div>
+  </div>
+</section>
+
+<section id="page-shop" class="page">
+  <div class="max-w-7xl mx-auto px-4 py-12 md:py-16">
+    <p class="font-mono-label text-[10px] text-gold mb-2">Drop 001 — Drop 003</p>
+    <h1 class="font-display text-3xl md:text-4xl tracking-[0.18em] mb-3">ALL PRODUCTS</h1>
+    <p class="text-mute text-sm max-w-2xl mb-10">Milled heavyweight knits, blind stitch hems, and scripture details. Designed for longevity and intention.</p>
+    <div class="flex flex-col md:flex-row md:items-center gap-4 mb-8 border-b border-white10 pb-6">
+      <div class="flex flex-wrap gap-2" id="filter-chips">
+        <button type="button" class="filter-chip active px-3 py-1.5 text-[10px] tracking-widest uppercase border border-white10" data-filter="all">All Items</button>
+        <button type="button" class="filter-chip px-3 py-1.5 text-[10px] tracking-widest uppercase border border-white10" data-filter="tops">Heavy Tops</button>
+        <button type="button" class="filter-chip px-3 py-1.5 text-[10px] tracking-widest uppercase border border-white10" data-filter="bottoms">Bottoms</button>
+        <button type="button" class="filter-chip px-3 py-1.5 text-[10px] tracking-widest uppercase border border-white10" data-filter="bundles">Bundles (-15%)</button>
+        <button type="button" class="filter-chip px-3 py-1.5 text-[10px] tracking-widest uppercase border border-white10" data-filter="accessories">Accessories</button>
+      </div>
+      <select id="sort-select" class="md:ml-auto px-3 py-2 text-[10px] tracking-widest uppercase w-full md:w-auto">
+        <option value="featured">Featured Drops</option>
+        <option value="price-asc">Price: Low to High</option>
+        <option value="price-desc">Price: High to Low</option>
+      </select>
+    </div>
+    <div id="shop-grid" class="grid grid-cols-2 md:grid-cols-4 gap-3 md:gap-5"></div>
+  </div>
+</section>
+<section id="page-product" class="page">
+  <div class="max-w-7xl mx-auto px-4 py-10 md:py-14">
+    <button type="button" data-nav="shop" class="text-[10px] tracking-widest uppercase text-mute hover:text-gold mb-8">← Back to Catalog</button>
+    <div class="grid md:grid-cols-2 gap-10 md:gap-14">
+      <div>
+        <div id="pdp-main" class="aspect-[3/4] bg-slate border border-white10 flex items-end p-4 mb-3 relative overflow-hidden"><img id="pdp-main-img" src="" alt="" class="absolute inset-0 w-full h-full object-cover"/><span class="text-[10px] tracking-widest text-mute uppercase relative z-10 bg-ink/60 px-2 py-1" id="pdp-caption">placeholder</span></div>
+        <div id="pdp-thumbs" class="grid grid-cols-4 gap-2"></div>
+      </div>
+      <div>
+        <p class="font-mono-label text-[10px] text-gold mb-2" id="pdp-meta"></p>
+        <h1 class="font-display text-2xl md:text-4xl tracking-[0.12em] mb-2" id="pdp-name"></h1>
+        <p class="text-gold text-lg mb-4" id="pdp-price"></p>
+        <p class="text-mute text-sm leading-relaxed mb-4" id="pdp-desc"></p>
+        <ul class="text-sm text-bone2/80 space-y-1 mb-8 list-disc list-inside" id="pdp-bullets"></ul>
+        <div class="mb-6">
+          <div class="flex justify-between mb-3"><span class="text-[10px] tracking-widest uppercase">Select Size</span><button type="button" id="btn-size-chart" class="text-[10px] tracking-widest uppercase text-gold hover:underline">Size Guide</button></div>
+          <div id="size-options" class="flex flex-wrap gap-2"></div>
+        </div>
+        <div class="mb-6 flex items-center gap-4">
+          <span class="text-[10px] tracking-widest uppercase">Qty</span>
+          <div class="flex items-center border border-white10"><button type="button" id="qty-minus" class="px-3 py-2 hover:text-gold">−</button><span id="qty-value" class="px-4 py-2 text-sm min-w-[2.5rem] text-center">1</span><button type="button" id="qty-plus" class="px-3 py-2 hover:text-gold">+</button></div>
+        </div>
+        <div id="pdp-bundle-box" class="border border-gold/40 bg-field/60 p-4 mb-4 hidden">
+          <p class="text-[10px] tracking-widest uppercase text-gold mb-1">Complete The Set • Save 15%</p>
+          <p class="text-sm text-mute mb-3">Bundle with matching bottom piece to save 15%.</p>
+          <p class="text-xs mb-3" id="pdp-match-label"></p>
+          <button type="button" id="btn-add-set" class="w-full py-2.5 border border-gold text-gold text-[10px] tracking-widest uppercase hover:bg-gold hover:text-ink transition">Add Set (−15%)</button>
+        </div>
+        <button type="button" id="btn-add-bag" class="w-full py-3.5 bg-gold text-ink text-[10px] tracking-[0.25em] uppercase font-medium hover:bg-golddk transition">Add to Bag</button>
+      </div>
+    </div>
+  </div>
+</section>
+<section id="page-prayer" class="page">
+  <div class="max-w-3xl mx-auto px-4 py-12 md:py-16">
+    <p class="font-mono-label text-[10px] text-gold text-center mb-2">Faith • Intercession • Fellowship</p>
+    <h1 class="font-display text-3xl md:text-5xl tracking-[0.16em] text-center mb-4">THE PRAYER SANCTUARY</h1>
+    <p class="text-center text-mute text-sm leading-relaxed mb-12">FALSE PROFITS was founded on a simple truth: no matter the business or worldly success, prayer remains our lifeline. We believe in carrying one another’s burdens. Whether you’re facing doubt, heartbreak, or stepping boldly into your God-given calling, our team and community pray over every single request.</p>
+    <form id="prayer-form" class="border border-white10 bg-slate p-6 md:p-8 mb-14 space-y-4">
+      <h2 class="font-display text-lg tracking-widest mb-1">SUBMIT A REQUEST</h2>
+      <p class="text-xs text-mute mb-4">Our founders and team pray over all submissions every Tuesday morning.</p>
+      <div><label class="block text-[10px] tracking-widest uppercase text-mute mb-1.5" for="prayer-name">Your Name</label><input id="prayer-name" type="text" class="w-full px-3 py-2.5 text-sm" placeholder="First Name or Initials"/></div>
+      <label class="flex items-center gap-2 text-sm text-bone2/80"><input id="prayer-anon" type="checkbox" class="accent-gold"/> Post anonymously on the Prayer Wall</label>
+      <div><label class="block text-[10px] tracking-widest uppercase text-mute mb-1.5" for="prayer-email">Email (Optional, for encouraging words)</label><input id="prayer-email" type="email" class="w-full px-3 py-2.5 text-sm"/></div>
+      <div><label class="block text-[10px] tracking-widest uppercase text-mute mb-1.5" for="prayer-area">Area of Intercession</label>
+        <select id="prayer-area" class="w-full px-3 py-2.5 text-sm">
+          <option>Purpose &amp; Chasing Dreams</option><option>Mental Health &amp; Peace</option><option>Healing &amp; Restoration</option><option>Family &amp; Relationships</option><option>Gratitude &amp; Thanksgiving</option>
+        </select>
+      </div>
+      <div><label class="block text-[10px] tracking-widest uppercase text-mute mb-1.5" for="prayer-text">What can we lift in prayer?</label><textarea id="prayer-text" rows="4" required class="w-full px-3 py-2.5 text-sm resize-y"></textarea></div>
+      <button type="submit" class="w-full py-3 bg-gold text-ink text-[10px] tracking-[0.25em] uppercase font-medium hover:bg-golddk transition">Send Prayer Request</button>
+      <p id="prayer-success" class="hidden text-center text-sm text-gold pt-2">Your prayer has been lifted up.<br/><span class="text-mute text-xs mt-2 block">“The prayer of a righteous person is powerful and effective.” — James 5:16</span></p>
+    </form>
+    <div>
+      <div class="text-center mb-6"><h2 class="font-display text-lg tracking-widest mb-2">COMMUNITY PRAYER WALL</h2><p class="text-xs text-mute">Click “Stand in Prayer” to agree with and lift up brothers and sisters. · <span id="prayer-count">3</span> Requests</p></div>
+      <div id="prayer-wall" class="space-y-4"></div>
+    </div>
+  </div>
+</section>
+<section id="page-about" class="page">
+  <div class="max-w-3xl mx-auto px-4 py-12 md:py-16">
+    <p class="font-mono-label text-[10px] text-gold text-center mb-2">The Meaning Behind The Name</p>
+    <h1 class="font-display text-3xl md:text-5xl tracking-[0.16em] text-center mb-2">FALSE PROFITS</h1>
+    <p class="text-center text-[11px] tracking-[0.25em] uppercase text-mute mb-10">A Call to Integrity &amp; Purpose</p>
+    <div class="aspect-[21/9] bg-slate border border-white10 mb-10 overflow-hidden relative"><img src="assets/hero-profit-soul.jpg" alt="False Profits campaign" class="absolute inset-0 w-full h-full object-cover opacity-80"/><div class="absolute inset-0 bg-ink/30"></div></div>
+    <article class="space-y-6 text-mute text-sm md:text-base leading-relaxed font-light">
+      <p>The name carries a deliberate double meaning: <span class="text-bone">Profits</span> (the endless worldly race for money and validation) and <span class="text-bone">Prophets</span> (the outside voices speaking doubt or deception over your destiny). Culture constantly tells you to compromise who you are for a quick return. Meanwhile, doubters, self-proclaimed gatekeepers, and cynicism line your path—acting as modern false prophets trying to talk you out of the dreams God placed in your spirit. False Profits is our refusal to trade our soul for worldly noise.</p>
+      <div class="border border-white10 bg-slate/50 p-5"><p class="font-mono-label text-[10px] text-gold mb-2">01 Silence Outside Noise</p><p>Never allow someone who didn’t give you your calling to talk you out of your destiny. We build modern streetwear as armor for dreamers pursuing purpose with pure hearts.</p></div>
+      <div class="border border-white10 bg-slate/50 p-5"><p class="font-mono-label text-[10px] text-gold mb-2">02 Uncompromising Craft</p><p>Faith is never an excuse for mediocrity. We source 460–500 GSM loopback cottons, custom dye in neutral earth tones, and engineer silhouettes comparable to top luxury houses.</p></div>
+      <p class="text-bone border-l-2 border-gold pl-4 italic">“Keep God at the forefront of everything you do. Chase the dream He whispered in the quiet place, and let the false profits of this world fade away.” — False Profits Collective</p>
+    </article>
+    <div class="mt-12 text-center"><button type="button" data-scroll="bundle-promo" class="px-8 py-3 border border-gold text-gold text-[10px] tracking-[0.25em] uppercase hover:bg-gold hover:text-ink transition">Shop The Uniform</button></div>
+  </div>
+</section>
+<footer class="border-t border-white10 mt-4 bg-slate/40">
+  <div class="max-w-7xl mx-auto px-4 py-12 grid md:grid-cols-4 gap-10 text-sm">
+    <div><p class="font-display tracking-[0.3em] mb-3">FALSE PROFITS</p><p class="text-mute text-xs leading-relaxed mb-3">Faith-anchored luxury streetwear. Rejecting outside voices and worldly profits to build garments of substance, reverence, and purpose.</p><p class="font-mono-label text-[9px] text-gold">Est. MMXXIV • All Glory to God</p></div>
+    <div><p class="font-mono-label text-[9px] text-mute mb-3">Store Navigation</p><div class="flex flex-col gap-2 text-xs tracking-widest uppercase text-bone2/80"><a href="#" data-nav="home" class="hover:text-gold">Home</a><a href="#" data-nav="shop" class="hover:text-gold">Shop All Drops</a><a href="#" data-scroll="bundle-promo" class="hover:text-gold">Sets &amp; Bundles (−15%)</a><a href="#" data-nav="prayer" class="hover:text-gold">Prayer Sanctuary</a><a href="#" data-nav="about" class="hover:text-gold">About &amp; Meaning</a></div></div>
+    <div><p class="font-mono-label text-[9px] text-mute mb-3">Customer Care</p><div class="flex flex-col gap-2 text-xs tracking-widest uppercase text-bone2/80"><button type="button" id="footer-size" class="text-left hover:text-gold">Fit &amp; Sizing Guide</button><span class="text-mute">Shipping Policy</span><span class="text-mute">Returns &amp; Exchanges</span><a href="#" data-nav="prayer" class="hover:text-gold">Submit A Prayer</a></div></div>
+    <div><p class="font-mono-label text-[9px] text-mute mb-3">Sanctuary Circle</p><p class="text-mute text-xs mb-3">Unreleased lookbooks, private drop codes, devotionals.</p><form id="footer-vip" class="flex gap-2"><input type="email" required placeholder="Email" class="flex-1 px-3 py-2 text-xs"/><button class="px-3 py-2 bg-gold text-ink text-[9px] tracking-widest uppercase">Join</button></form></div>
+  </div>
+  <div class="border-t border-white10 px-4 py-4 text-center text-[9px] tracking-widest uppercase text-mute">© 2026 False Profits Clothing Co. All Rights Reserved. · Integrity First • Prayer Sanctuary • Curated Drops</div>
+</footer>
+</div>
+
+<div id="size-chart-modal" class="fixed inset-0 z-[75] hidden items-center justify-center p-4">
+  <div class="absolute inset-0 bg-black/70" id="size-chart-overlay"></div>
+  <div class="relative bg-slate border border-white10 max-w-md w-full p-6">
+    <h3 class="font-display tracking-widest text-sm mb-2">GARMENT MEASUREMENTS (INCHES)</h3>
+    <p class="text-xs text-mute mb-4">Our garments feature an intentional luxury drop-shoulder and boxy drape. Select your standard size for our relaxed silhouette.</p>
+    <table class="w-full text-xs text-left mb-4">
+      <thead class="text-mute border-b border-white10"><tr><th class="py-2">Size</th><th>Chest</th><th>Length</th><th>Sleeve</th></tr></thead>
+      <tbody class="text-bone2/90">
+        <tr class="border-b border-white10/50"><td class="py-2">S</td><td>44"</td><td>27"</td><td>21"</td></tr>
+        <tr class="border-b border-white10/50"><td class="py-2">M</td><td>46"</td><td>28"</td><td>21.5"</td></tr>
+        <tr class="border-b border-white10/50"><td class="py-2">L</td><td>48"</td><td>29"</td><td>22"</td></tr>
+        <tr class="border-b border-white10/50"><td class="py-2">XL</td><td>50"</td><td>30"</td><td>22.5"</td></tr>
+        <tr><td class="py-2">XXL</td><td>52"</td><td>31"</td><td>23"</td></tr>
+      </tbody>
+    </table>
+    <button type="button" id="size-chart-close" class="w-full py-2.5 border border-gold text-gold text-[10px] tracking-widest uppercase">Close Guide</button>
+  </div>
+</div>
+<div id="qv-modal" class="fixed inset-0 z-[75] hidden items-center justify-center p-4">
+  <div class="absolute inset-0 bg-black/70" id="qv-overlay"></div>
+  <div class="relative bg-slate border border-white10 max-w-lg w-full p-6 max-h-[90vh] overflow-y-auto">
+    <div class="flex justify-between mb-4"><h3 class="font-display tracking-widest text-sm">QUICK VIEW &amp; BUNDLE</h3><button type="button" id="qv-close" class="text-mute hover:text-gold">✕</button></div>
+    <div id="qv-body"></div>
+  </div>
+</div>
+<div id="cart-overlay" class="overlay fixed inset-0 bg-black/60 z-[60]"></div>
+<aside id="cart-drawer" class="cart-drawer fixed top-0 right-0 h-full w-full max-w-md bg-slate border-l border-white10 z-[70] flex flex-col">
+  <div class="flex items-center justify-between px-5 py-4 border-b border-white10"><h2 class="font-display tracking-widest text-sm" id="cart-header">SHOPPING BAG · 0 ITEMS</h2><button type="button" id="btn-cart-close" class="text-mute hover:text-gold">✕</button></div>
+  <div class="px-5 py-3 border-b border-white10">
+    <div class="flex justify-between text-[10px] tracking-widest uppercase text-mute mb-1.5"><span id="ship-msg">Add $150.00 for free shipping</span><span id="ship-remain"></span></div>
+    <div class="h-1 bg-edge rounded-full overflow-hidden mb-2"><div id="ship-fill" class="free-ship-fill h-full bg-gold w-0"></div></div>
+    <p class="text-[10px] text-gold tracking-wide">Bundle any Top &amp; Bottom to unlock 15% off automatically.</p>
+  </div>
+  <div id="cart-items" class="flex-1 overflow-y-auto px-5 py-4 space-y-4"></div>
+  <div class="border-t border-white10 px-5 py-4 space-y-2">
+    <div class="flex justify-between text-sm"><span class="text-mute">Subtotal</span><span id="cart-subtotal">$0.00</span></div>
+    <div id="bundle-row" class="flex justify-between text-sm text-gold hidden"><span>Bundle save 15%</span><span id="cart-bundle">−$0.00</span></div>
+    <div class="flex justify-between text-sm"><span class="text-mute">Estimated Shipping</span><span class="text-mute">Calculated at checkout</span></div>
+    <div class="flex justify-between text-base font-medium pt-2 border-t border-white10"><span>Total</span><span id="cart-total">$0.00</span></div>
+    <button type="button" id="btn-checkout" class="w-full mt-3 py-3.5 bg-gold text-ink text-[10px] tracking-[0.25em] uppercase font-medium hover:bg-golddk transition">Proceed to Checkout</button>
+    <p class="text-[9px] text-center text-mute tracking-wide pt-1">Client Prototype • Real charges are not processed.</p>
+  </div>
+</aside>
+<aside id="account-panel" class="account-panel fixed top-0 right-0 h-full w-full max-w-md bg-slate border-l border-white10 z-[70] flex flex-col">
+  <div class="flex items-center justify-between px-5 py-4 border-b border-white10"><div><p class="font-mono-label text-[9px] text-gold mb-0.5">Sanctuary Circle</p><h2 class="font-display tracking-widest text-sm">FALSE PROFITS MEMBER</h2></div><button type="button" id="btn-account-close" class="text-mute hover:text-gold">✕</button></div>
+  <div class="px-5 py-6 space-y-4 flex-1">
+    <p class="text-sm text-mute">Track unreleased drop reservations, order history, and submitted prayers.</p>
+    <div><label class="block text-[10px] tracking-widest uppercase text-mute mb-1.5">Email Address</label><input type="email" class="w-full px-3 py-2.5 text-sm"/></div>
+    <div><label class="block text-[10px] tracking-widest uppercase text-mute mb-1.5">Password</label><input type="password" class="w-full px-3 py-2.5 text-sm"/></div>
+    <button type="button" id="btn-signin-demo" class="w-full py-3 bg-gold text-ink text-[10px] tracking-[0.25em] uppercase hover:bg-golddk transition">Sign In / Register</button>
+    <p class="text-[10px] text-mute/60 pt-4">Demo only — no credentials are stored.</p>
+  </div>
+</aside>
+<div id="toast" class="toast fixed bottom-24 left-1/2 -translate-x-1/2 z-[80] bg-bone text-ink px-6 py-3 text-[10px] tracking-widest uppercase shadow-lg">Saved</div>
+
+<script>
+const PRODUCTS=[
+{id:'fp-phh',img:'assets/product-prophet-heavy-hoodie.png',name:'Prophet Heavy Hoodie',cat:'tops',price:135,badge:'New Drop',badgeClass:'badge-new',bundle:true,drop:'Drop 003',type:'Heavy Knit',caption:'Campaign still — oversized hoodie, ink wash',desc:'Architectural heavyweight hoodie in custom 500 GSM loopback cotton. Dropped shoulder, unyielding faith.',bullets:['500 GSM Heavyweight French Terry','Oversized dropped shoulder with architectural drape'],matchId:'fp-srs'},
+{id:'fp-srs',img:'assets/product-sanctuary-sweatpant.png',name:'Sanctuary Relaxed Sweatpant',cat:'bottoms',price:115,badge:'Essential',badgeClass:'badge-essential',bundle:true,drop:'Drop 003',type:'Heavy Knit',caption:'Lookbook — relaxed taper, soft armor',desc:'Relaxed tailored bottom. Pairs as Uniform with any heavyweight top.',bullets:['Brushed heavyweight fleece','Tailored relaxed taper'],matchId:'fp-phh'},
+{id:'fp-ngt',img:'assets/product-narrow-gate-tee.png',name:'Narrow Gate Oversized Tee',cat:'tops',price:68,badge:'Bestseller',badgeClass:'badge-bestseller',bundle:true,drop:'Drop 003',type:'Heavy Knit',caption:'Editorial flatlay — mist wash, Cinzel mark',desc:'Oversized tee cut for the narrow gate. Restrained chest mark.',bullets:['Heavyweight jersey','Boxy architectural drape'],matchId:'fp-srs'},
+{id:'fp-ccs',img:'assets/product-cargo-chore-sweatpant.png',name:'Cargo Chore Sweatpant',cat:'bottoms',price:125,badge:'Limited',badgeClass:'badge-limited',bundle:true,drop:'Drop 003',type:'Heavy Knit',caption:'Street altar — chore cargo, utility pocket',desc:'Chore-inspired cargo sweatpant. Limited run.',bullets:['Utility cargo construction','Concealed scripture tag'],matchId:'fp-phh'},
+{id:'fp-fcz',img:'assets/product-foundation-zip-hoodie.png',name:'Foundation Cropped Zip Hoodie',cat:'tops',price:140,badge:'New Drop',badgeClass:'badge-new',bundle:true,drop:'Drop 003',type:'Heavy Knit',caption:'Studio — cropped zip, gold hardware',desc:'Cropped zip hoodie with tonal hardware.',bullets:['500 GSM French Terry','Cropped architectural hem'],matchId:'fp-srs'},
+{id:'fp-plt',img:'assets/product-profit-loss-tee.png',name:'Profit & Loss Vintage Tee',cat:'tops',price:72,badge:'',badgeClass:'',bundle:true,drop:'Drop 002',type:'Heavy Knit',caption:'Vintage wash — dual confession at hem',desc:'Garment-dyed vintage tee. Dual confession at the hem.',bullets:['Vintage wash cotton','Dual-meaning print'],matchId:'fp-ccs'},
+{id:'fp-stv',img:'assets/product-sacred-vest.png',name:'Sacred Tactical Nylon Vest',cat:'tops',price:155,badge:'Few Left',badgeClass:'badge-few',bundle:false,drop:'Drop 003',type:'Heavy Knit',caption:'Detail — nylon shell, matte tactical',desc:'Lightweight nylon vest. Clean tactical lines.',bullets:['Japanese memory nylon','Matte finish, gold zipper pull'],matchId:null},
+{id:'fp-sct',img:'assets/product-solitary-cross-tote.png',name:'Solitary Cross Canvas Tote',cat:'accessories',price:55,badge:'Core',badgeClass:'badge-core',bundle:false,drop:'Core',type:'Accessory',caption:'Still life — canvas tote, quiet cross',desc:'Heavy canvas tote. Minimal cross mark for daily carry.',bullets:['Heavy canvas body','Quiet cross mark'],matchId:null}
+];
+const SIZES=['S','M','L','XL','XXL'], FREE_SHIP=150;
+let cart=[], currentFilter='all', currentSort='featured', selectedProduct=null, selectedSize='M', qty=1, heroIndex=0, heroTimer=null, heroPaused=false, annIndex=0;
+let prayers=[
+{name:'Jordan M.',area:'Purpose & Calling',when:'2 hours ago',text:'Praying for courage to leave my corporate security and pursue the fashion line and youth ministry God placed in my spirit. Silence my fear of failure.',count:42},
+{name:'Anonymous Believer',area:'Healing & Restoration',when:'5 hours ago',text:'Praying for restoration over my family and deliverance from crippling anxiety. Standing on the promise that He has not given us a spirit of fear.',count:68},
+{name:'Marcus K.',area:'Peace & Mental Health',when:'Yesterday',text:'Asking for peace of mind while tuning out negative peers who mock my faith. That I keep my eyes on Christ and remain unwavering in school.',count:29}
+];
+const $= (s,el=document)=>el.querySelector(s), $$=(s,el=document)=>[...el.querySelectorAll(s)];
+const money=n=>'$'+n.toFixed(2), findP=id=>PRODUCTS.find(p=>p.id===id);
+const isTop=p=>p.cat==='tops', isBottom=p=>p.cat==='bottoms';
+function navigate(page){
+  $$('.page').forEach(p=>p.classList.remove('active'));
+  const el=document.getElementById(page==='product'?'page-product':`page-${page}`);
+  if(el) el.classList.add('active');
+  $$('.nav-link').forEach(a=>a.classList.toggle('active', a.dataset.nav===page));
+  closeMobile(); window.scrollTo({top:0,behavior:'smooth'});
+  if(page==='shop') renderShop(); if(page==='home') renderHomeGrid(); if(page==='prayer') renderPrayers();
+}
+function productCard(p){
+  const badges=`${p.badge?`<span class="badge ${p.badgeClass}">${p.badge}</span>`:''}${p.bundle?`<span class="badge badge-bundle">Bundle Set</span>`:''}`;
+  return `<article class="product-card group relative"><div class="aspect-[3/4] bg-slate border border-white10 overflow-hidden mb-3 relative"><div class="absolute top-2 left-2 z-10 flex flex-col gap-1 items-start">${badges}</div><img src="${p.img}" alt="${p.name}" class="product-visual absolute inset-0 w-full h-full object-cover"/><div class="hover-actions absolute inset-x-3 bottom-3 z-10 hidden md:block"><button type="button" data-qv="${p.id}" class="w-full py-2.5 bg-bone text-ink text-[9px] tracking-widest uppercase hover:bg-gold transition">Quick View &amp; Bundle</button></div></div><p class="font-mono-label text-[8px] text-mute mb-1">${p.type}</p><button type="button" class="text-left w-full" data-open="${p.id}"><h3 class="font-display text-xs md:text-sm tracking-wider mb-1 group-hover:text-gold transition">${p.name}</h3><p class="text-mute text-xs">${money(p.price)} USD</p></button><button type="button" data-qv="${p.id}" class="md:hidden mt-2 w-full py-1.5 border border-white10 text-[9px] tracking-widest uppercase hover:border-gold hover:text-gold">Quick View &amp; Bundle</button></article>`;
+}
+function bindCards(scope){ $$(`${scope} [data-open]`).forEach(b=>b.onclick=e=>{e.stopPropagation();openProduct(b.dataset.open)}); $$(`${scope} [data-qv]`).forEach(b=>b.onclick=e=>{e.stopPropagation();openQuickView(b.dataset.qv)}); }
+function renderHomeGrid(){ $('#home-grid').innerHTML=PRODUCTS.map(productCard).join(''); bindCards('#home-grid'); }
+function getList(){ let list=PRODUCTS.filter(p=>{ if(currentFilter==='all') return true; if(currentFilter==='tops') return p.cat==='tops'; if(currentFilter==='bottoms') return p.cat==='bottoms'; if(currentFilter==='accessories') return p.cat==='accessories'; if(currentFilter==='bundles') return p.bundle; return true; }); if(currentSort==='price-asc') list=[...list].sort((a,b)=>a.price-b.price); else if(currentSort==='price-desc') list=[...list].sort((a,b)=>b.price-a.price); return list; }
+function renderShop(){ const q=($('#search-input')?.value||'').trim().toLowerCase(); let list=getList(); if(q) list=list.filter(p=>p.name.toLowerCase().includes(q)||p.drop.toLowerCase().includes(q)||p.bullets.join(' ').toLowerCase().includes(q)); $('#shop-grid').innerHTML=list.length?list.map(productCard).join(''):'<p class="col-span-full text-center text-mute py-12 text-sm">No pieces match.</p>'; bindCards('#shop-grid'); }
+function openProduct(id){
+  selectedProduct=findP(id); if(!selectedProduct) return; qty=1; selectedSize='M'; $('#qty-value').textContent='1';
+  $('#pdp-name').textContent=selectedProduct.name; $('#pdp-price').textContent=money(selectedProduct.price)+' USD';
+  $('#pdp-desc').textContent=selectedProduct.desc; $('#pdp-meta').textContent=`${selectedProduct.drop} · ${selectedProduct.type}${selectedProduct.badge?' · '+selectedProduct.badge:''}`;
+  $('#pdp-caption').textContent=selectedProduct.caption; const pimg=$('#pdp-main-img'); if(pimg){ pimg.src=selectedProduct.img; pimg.alt=selectedProduct.name; } $('#pdp-bullets').innerHTML=selectedProduct.bullets.map(b=>`<li>${b}</li>`).join('');
+  const details=['Front','Label stitch','Cuff detail','Hardware'];
+  $('#pdp-thumbs').innerHTML=details.map((l,i)=>`<button type="button" class="aspect-square border border-white10 overflow-hidden hover:border-gold relative" data-thumb="${i}"><img src="${selectedProduct.img}" alt="${l}" class="absolute inset-0 w-full h-full object-cover" style="object-position:${['center','top','bottom','left'][i]}"/><span class="relative z-10 text-[8px] tracking-widest text-bone uppercase bg-ink/50 px-1">${l}</span></button>`).join('');
+  $$('#pdp-thumbs [data-thumb]').forEach(btn=>btn.onclick=()=>{$('#pdp-caption').textContent=selectedProduct.caption+' — '+details[+btn.dataset.thumb]; $('#pdp-main-img').style.objectPosition=['center','top','bottom','left'][+btn.dataset.thumb];});
+  $('#size-options').innerHTML=SIZES.map(s=>`<button type="button" class="size-btn px-4 py-2 text-xs border border-white10 hover:border-gold ${s===selectedSize?'selected':''}" data-size="${s}">${s}</button>`).join('');
+  $$('.size-btn').forEach(b=>b.onclick=()=>{selectedSize=b.dataset.size; $$('.size-btn').forEach(x=>x.classList.toggle('selected',x.dataset.size===selectedSize))});
+  const box=$('#pdp-bundle-box'); if(selectedProduct.matchId){ const m=findP(selectedProduct.matchId); box.classList.remove('hidden'); $('#pdp-match-label').textContent='Matching item: '+m.name+' · '+money(m.price); } else box.classList.add('hidden');
+  navigate('product');
+}
+function openQuickView(id){
+  const p=findP(id); if(!p) return; const match=p.matchId?findP(p.matchId):null;
+  $('#qv-body').innerHTML=`<div class="aspect-[3/4] max-h-44 bg-field border border-white10 mb-4 relative overflow-hidden"><img src="${p.img}" alt="${p.name}" class="absolute inset-0 w-full h-full object-cover"/><span class="absolute bottom-2 left-2 text-[9px] tracking-widest text-bone uppercase bg-ink/60 px-2 py-1 z-10">${p.caption}</span></div><p class="font-mono-label text-[9px] text-gold mb-1">${p.drop} · ${p.type}</p><h4 class="font-display tracking-wider mb-1">${p.name}</h4><p class="text-mute text-sm mb-3">${money(p.price)} USD</p><p class="text-sm text-mute mb-3">${p.desc}</p><ul class="text-xs text-bone2/80 space-y-1 mb-4 list-disc list-inside">${p.bullets.map(b=>`<li>${b}</li>`).join('')}</ul><div class="flex justify-between items-center mb-2"><span class="text-[10px] tracking-widest uppercase">Select Size</span><button type="button" class="text-[10px] text-gold tracking-widest uppercase" id="qv-size-guide">Size Guide</button></div><div class="flex gap-2 mb-4" id="qv-sizes">${SIZES.map(s=>`<button type="button" class="qv-size px-3 py-1.5 text-xs border border-white10 ${s==='M'?'selected':''}" data-size="${s}">${s}</button>`).join('')}</div>${match?`<div class="border border-gold/40 p-3 mb-4"><p class="text-[10px] tracking-widest uppercase text-gold mb-1">Complete The Set • Save 15%</p><p class="text-xs text-mute mb-2">Bundle with matching bottom piece to save 15%.</p><p class="text-xs mb-2">${match.name} · ${money(match.price)}</p><button type="button" class="w-full py-2 border border-gold text-gold text-[9px] tracking-widest uppercase" data-qv-set="${p.id}">Add Set (−15%)</button></div>`:''}<div class="flex gap-2"><button type="button" class="flex-1 py-2.5 bg-gold text-ink text-[9px] tracking-widest uppercase" data-qv-add="${p.id}">Add to Bag</button><button type="button" class="flex-1 py-2.5 border border-white10 text-[9px] tracking-widest uppercase" data-qv-full="${p.id}">View Full</button></div>`;
+  const m=$('#qv-modal'); m.classList.remove('hidden'); m.classList.add('flex'); let qvSize='M';
+  $$('.qv-size').forEach(b=>b.onclick=()=>{qvSize=b.dataset.size; $$('.qv-size').forEach(x=>x.classList.toggle('selected',x.dataset.size===qvSize))});
+  $('#qv-size-guide').onclick=openSizeGuide;
+  const addBtn=$('[data-qv-add]'); if(addBtn) addBtn.onclick=()=>{addItem(p.id,qvSize,1); closeQV(); openCart()};
+  const full=$('[data-qv-full]'); if(full) full.onclick=()=>{closeQV(); openProduct(p.id)};
+  const setBtn=$('[data-qv-set]'); if(setBtn) setBtn.onclick=()=>{addItem(p.id,qvSize,1); if(p.matchId) addItem(p.matchId,qvSize,1); closeQV(); openCart()};
+}
+function closeQV(){ $('#qv-modal').classList.add('hidden'); $('#qv-modal').classList.remove('flex'); }
+function openSizeGuide(){ const m=$('#size-chart-modal'); m.classList.remove('hidden'); m.classList.add('flex'); }
+function closeSizeGuide(){ $('#size-chart-modal').classList.add('hidden'); $('#size-chart-modal').classList.remove('flex'); }
+function cartCount(){ return cart.reduce((n,i)=>n+i.qty,0); }
+function cartSubtotal(){ return cart.reduce((n,i)=>n+i.price*i.qty,0); }
+function bundleDiscount(sub){ const hasTop=cart.some(i=>{const p=findP(i.id); return p&&isTop(p)}); const hasBottom=cart.some(i=>{const p=findP(i.id); return p&&isBottom(p)}); return (hasTop&&hasBottom)?sub*0.15:0; }
+function addItem(id,size,q){ const p=findP(id); if(!p) return; const ex=cart.find(i=>i.id===id&&i.size===size); if(ex) ex.qty+=q; else cart.push({id,name:p.name,price:p.price,size,qty:q}); updateCartUI(); }
+function updateCartUI(){
+  const count=cartCount(); $('#cart-badge').textContent=count; $('#cart-header').textContent=`SHOPPING BAG · ${count} ITEM${count===1?'':'S'}`;
+  const sub=cartSubtotal(), disc=bundleDiscount(sub); $('#cart-subtotal').textContent=money(sub);
+  if(disc>0){ $('#bundle-row').classList.remove('hidden'); $('#cart-bundle').textContent='−'+money(disc); } else $('#bundle-row').classList.add('hidden');
+  $('#cart-total').textContent=money(sub-disc); $('#ship-fill').style.width=Math.min(100,(sub/FREE_SHIP)*100)+'%';
+  $('#ship-msg').textContent=sub>=FREE_SHIP?'You unlocked free shipping':`Add ${money(FREE_SHIP-sub)} for free shipping`;
+  const box=$('#cart-items');
+  if(!cart.length){ box.innerHTML=`<div class="text-center py-16"><p class="text-mute text-sm mb-6">Your shopping bag is currently empty.</p><button type="button" class="px-6 py-2.5 border border-gold text-gold text-[10px] tracking-widest uppercase" id="cart-explore">Explore the Pieces</button></div>`; $('#cart-explore').onclick=()=>{closeCart(); navigate('shop')}; return; }
+  box.innerHTML=cart.map((item,idx)=>`<div class="flex gap-3 border-b border-white10/60 pb-4"><div class="w-16 h-20 bg-field border border-white10 shrink-0 overflow-hidden"><img src="${findP(item.id)?.img||''}" alt="" class="w-full h-full object-cover"/></div><div class="flex-1 min-w-0"><p class="font-display text-xs tracking-wider truncate">${item.name}</p><p class="text-[11px] text-mute mt-0.5">Size ${item.size} · ${money(item.price)}</p><div class="flex items-center justify-between mt-2"><div class="flex items-center border border-white10 text-xs"><button type="button" data-cart-qty="${idx}" data-dir="-1" class="px-2 py-1 hover:text-gold">−</button><span class="px-2">${item.qty}</span><button type="button" data-cart-qty="${idx}" data-dir="1" class="px-2 py-1 hover:text-gold">+</button></div><button type="button" data-cart-remove="${idx}" class="text-[10px] tracking-widest uppercase text-mute hover:text-gold">Remove</button></div></div></div>`).join('');
+  $$('[data-cart-qty]').forEach(b=>b.onclick=()=>{const i=+b.dataset.cartQty; cart[i].qty=Math.max(1,cart[i].qty+(+b.dataset.dir)); updateCartUI()});
+  $$('[data-cart-remove]').forEach(b=>b.onclick=()=>{cart.splice(+b.dataset.cartRemove,1); updateCartUI()});
+}
+function openCart(){ closeAccount(); $('#cart-drawer').classList.add('open'); $('#cart-overlay').classList.add('open'); updateCartUI(); }
+function closeCart(){ $('#cart-drawer').classList.remove('open'); if(!$('#account-panel').classList.contains('open')&&!$('#mobile-drawer').classList.contains('open')) $('#cart-overlay').classList.remove('open'); }
+function openAccount(){ closeCart(); $('#account-panel').classList.add('open'); $('#cart-overlay').classList.add('open'); }
+function closeAccount(){ $('#account-panel').classList.remove('open'); if(!$('#cart-drawer').classList.contains('open')&&!$('#mobile-drawer').classList.contains('open')) $('#cart-overlay').classList.remove('open'); }
+function openMobile(){ $('#mobile-drawer').classList.add('open'); $('#mobile-overlay').classList.add('open'); }
+function closeMobile(){ $('#mobile-drawer').classList.remove('open'); $('#mobile-overlay').classList.remove('open'); }
+function openSearch(){ $('#search-overlay').classList.add('open'); $('#search-input').focus(); }
+function closeSearch(){ $('#search-overlay').classList.remove('open'); }
+function renderSearch(){ const q=($('#search-input').value||'').trim().toLowerCase(); const box=$('#search-results'); if(!q){box.innerHTML='';return} const hits=PRODUCTS.filter(p=>p.name.toLowerCase().includes(q)||p.drop.toLowerCase().includes(q)||p.bullets.join(' ').toLowerCase().includes(q)); box.innerHTML=hits.length?hits.map(p=>`<button type="button" class="w-full text-left px-3 py-3 border border-white10 hover:border-gold flex justify-between" data-search-open="${p.id}"><span class="font-display text-xs tracking-wider">${p.name}</span><span class="text-mute text-xs">${money(p.price)}</span></button>`).join(''):'<p class="text-mute text-sm">No results.</p>'; $$('[data-search-open]').forEach(b=>b.onclick=()=>{closeSearch(); openProduct(b.dataset.searchOpen)}); }
+function renderPrayers(){ $('#prayer-count').textContent=prayers.length; $('#prayer-wall').innerHTML=prayers.map((p,i)=>`<article class="border border-white10 bg-slate/80 p-5"><div class="flex flex-wrap gap-2 text-[10px] tracking-widest uppercase text-mute mb-3"><span class="text-gold">${p.name}</span><span>·</span><span>${p.area}</span><span>·</span><span>${p.when}</span></div><p class="text-sm leading-relaxed mb-4">“${p.text}”</p><button type="button" data-pray="${i}" class="text-[10px] tracking-widest uppercase text-gold border border-gold/40 px-3 py-1.5 hover:bg-gold hover:text-ink transition">Stand in Prayer · ${p.count} believers</button></article>`).join(''); $$('[data-pray]').forEach(b=>b.onclick=()=>{prayers[+b.dataset.pray].count+=1; renderPrayers()}); }
+function buildHeroDots(){ $('#hero-dots').innerHTML=$$('.hero-slide').map((_,i)=>`<button type="button" class="dot w-2 h-2 rounded-full bg-white/30" data-dot="${i}"></button>`).join(''); updateDots(); $$('[data-dot]').forEach(d=>d.onclick=()=>{heroIndex=+d.dataset.dot; showHero(heroIndex); restartHero()}); }
+function updateDots(){ $$('.dot').forEach((d,i)=>d.classList.toggle('active',i===heroIndex)); }
+function showHero(i){ $$('.hero-slide').forEach((s,idx)=>s.classList.toggle('active',idx===i)); updateDots(); }
+function nextHero(){ if(heroPaused) return; heroIndex=(heroIndex+1)%$$('.hero-slide').length; showHero(heroIndex); }
+function restartHero(){ clearInterval(heroTimer); heroTimer=setInterval(nextHero,5000); }
+function buildAnnDots(){ $('#ann-dots').innerHTML=[0,1,2].map(i=>`<button type="button" class="ann-dot w-1.5 h-1.5 rounded-full bg-white/25" data-ann-dot="${i}"></button>`).join(''); updateAnn(); $$('[data-ann-dot]').forEach(d=>d.onclick=()=>{annIndex=+d.dataset.annDot; updateAnn()}); setInterval(()=>{annIndex=(annIndex+1)%3; updateAnn()},4000); }
+function updateAnn(){ $$('.ann-msg').forEach(m=>m.style.opacity=+m.dataset.ann===annIndex?'1':'0'); $$('.ann-dot').forEach((d,i)=>d.classList.toggle('active',i===annIndex)); }
+function downloadHTML(){ const blob=new Blob(['<!DOCTYPE html>\n'+document.documentElement.outerHTML],{type:'text/html'}); const a=document.createElement('a'); a.href=URL.createObjectURL(blob); a.download='false-profits-store.html'; a.click(); URL.revokeObjectURL(a.href); }
+function toast(msg){ const t=$('#toast'); t.textContent=msg; t.classList.add('show'); setTimeout(()=>t.classList.remove('show'),2600); }
+document.addEventListener('click',e=>{
+  const nav=e.target.closest('[data-nav]');
+  if(nav){ e.preventDefault(); if(nav.dataset.filter){ currentFilter=nav.dataset.filter; $$('.filter-chip').forEach(c=>c.classList.toggle('active',c.dataset.filter===currentFilter)); } navigate(nav.dataset.nav); }
+  const sc=e.target.closest('[data-scroll]');
+  if(sc){ e.preventDefault(); const id=sc.dataset.scroll; navigate('home'); setTimeout(()=>document.getElementById(id)?.scrollIntoView({behavior:'smooth'}),80); }
+});
+$('#btn-menu').onclick=openMobile; $('#btn-menu-close').onclick=closeMobile; $('#mobile-overlay').onclick=()=>{closeMobile(); closeCart(); closeAccount()};
+$('#btn-cart').onclick=openCart; $('#btn-cart-close').onclick=closeCart; $('#btn-account').onclick=openAccount; $('#btn-account-close').onclick=closeAccount;
+$('#cart-overlay').onclick=()=>{closeCart(); closeAccount()}; $('#btn-search').onclick=openSearch; $('#btn-search-close').onclick=closeSearch;
+$('#search-input').addEventListener('input',()=>{renderSearch(); if($('#page-shop').classList.contains('active')) renderShop()});
+$$('.filter-chip').forEach(chip=>chip.onclick=()=>{currentFilter=chip.dataset.filter; $$('.filter-chip').forEach(c=>c.classList.toggle('active',c===chip)); renderShop()});
+$('#sort-select').onchange=e=>{currentSort=e.target.value; renderShop()};
+$('#qty-minus').onclick=()=>{qty=Math.max(1,qty-1); $('#qty-value').textContent=qty}; $('#qty-plus').onclick=()=>{qty+=1; $('#qty-value').textContent=qty};
+$('#btn-add-bag').onclick=()=>{if(!selectedProduct)return; addItem(selectedProduct.id,selectedSize,qty); openCart()};
+$('#btn-add-set').onclick=()=>{if(!selectedProduct)return; addItem(selectedProduct.id,selectedSize,qty); if(selectedProduct.matchId) addItem(selectedProduct.matchId,selectedSize,1); openCart()};
+$('#btn-add-uniform').onclick=()=>{addItem('fp-phh','M',1); addItem('fp-srs','M',1); openCart()};
+$('#btn-size-chart').onclick=openSizeGuide; $('#footer-size').onclick=openSizeGuide;
+$('#size-chart-close').onclick=$('#size-chart-overlay').onclick=closeSizeGuide; $('#qv-close').onclick=$('#qv-overlay').onclick=closeQV;
+$('#prayer-form').onsubmit=e=>{e.preventDefault(); const anon=$('#prayer-anon').checked; const name=anon?'Anonymous Believer':($('#prayer-name').value.trim()||'Anonymous Believer'); const text=$('#prayer-text').value.trim(); if(!text) return; prayers.unshift({name,area:$('#prayer-area').value,when:'Just now',text,count:1}); $('#prayer-success').classList.remove('hidden'); e.target.reset(); renderPrayers()};
+$('#vip-form').onsubmit=e=>{e.preventDefault(); e.target.classList.add('hidden'); $('#vip-thanks').classList.remove('hidden')};
+$('#footer-vip').onsubmit=e=>{e.preventDefault(); toast('Joined Sanctuary Circle'); e.target.reset()};
+$('#btn-checkout').onclick=()=>{if(!cart.length)return; closeCart(); toast('Order placed — thank you (demo)'); cart=[]; updateCartUI()};
+$('#btn-signin-demo').onclick=()=>{closeAccount(); toast('Signed in (demo)')};
+$('#btn-desktop').onclick=()=>{document.body.classList.remove('preview-mobile'); document.body.classList.add('preview-desktop')};
+$('#btn-mobile').onclick=()=>{document.body.classList.add('preview-mobile'); document.body.classList.remove('preview-desktop')};
+$('#btn-download').onclick=downloadHTML;
+$('#hero').addEventListener('mouseenter',()=>{heroPaused=true}); $('#hero').addEventListener('mouseleave',()=>{heroPaused=false});
+buildAnnDots(); buildHeroDots(); restartHero(); renderHomeGrid(); renderShop(); renderPrayers(); updateCartUI();
+</script>
+</body>
+</html>
